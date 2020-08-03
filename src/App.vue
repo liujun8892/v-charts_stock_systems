@@ -41,5 +41,8 @@ html,body{
   display: none;
 
 }
+.el-table {
+  margin-top: 10px;
+}
 
 </style>

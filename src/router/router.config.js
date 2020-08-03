@@ -38,10 +38,17 @@ export default [
         name: 'mai', 
         component: () => import('../views/content/mai.vue'),
         meta: {
-        
+        }
+      },
+      {
+        path: '/personal_stock',
+        name: 'index',
+        component: () => import('../views/personal_stock'),
+        meta: {
         }
       }
     ]
   },
+
   
 ];
