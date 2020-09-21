@@ -31,7 +31,7 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
             <div class="avatar">
-                <el-image src="./src/assets/img/avatar.png"></el-image>
+<!--                <el-image src="./src/assets/img/avatar.png"></el-image>-->
 <!--                <img src="src/assets/img/avatar.png" alt="">-->
                 <span>eric</span>
             </div>
@@ -110,19 +110,22 @@
                 this.value = val;
             },
             addData(code, name, index) {
-                let arr = localStorage.getItem('codeArr') ? JSON.parse(localStorage.getItem('codeArr')) : [];
-                let obj = {
-                    code: code,
-                    name: name,
-                    dateRemark: '',
-                    pattern: '',
-                }
-                if (arr.indexOf(obj) != -1) {
+                let arr = localStorage.getItem('codeArr') ? JSON.parse(localStorage.getItem('codeArr')):[];
+                let codeIndex = arr.findIndex(item=>item.code === code)
+                console.log(codeIndex)
+                if(codeIndex!== -1){
                     this.$message({
                         message: '已存在列表',
                         type: 'danger'
                     });
                     return;
+                }
+                this.list.splice(index,1)
+                let obj = {
+                    code: code,
+                    name: name,
+                    dateRemark: '',
+                    pattern: '',
                 }
                 this.list.splice(index, 1)
                 arr.unshift(obj);
@@ -166,7 +169,9 @@
                     }
                 })
                     .then((res) => {
+                        console.log(res)
                         this.list = res.showapi_res_body.list;
+                        // console.log(this.list)
                         this.dialogTableVisible = true;
                     })
                     .catch((error) => {

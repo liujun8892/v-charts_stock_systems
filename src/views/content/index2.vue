@@ -164,7 +164,6 @@ export default {
             //   console.log(333)
               this.getList();
           }
-          
       },10000)
        this.getList();
     },
